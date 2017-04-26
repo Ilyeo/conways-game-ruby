@@ -1,5 +1,5 @@
 require "rspec"
-require_relative "conway.rb"
+require_relative "Cell"
 
 describe Cell do
   subject(:cell) { Cell.new }

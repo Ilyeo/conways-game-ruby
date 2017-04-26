@@ -1,5 +1,6 @@
 require "rspec"
-require_relative "conway.rb"
+require_relative "Board"
+require_relative "Cell"
 
 describe Board do
 
