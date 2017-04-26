@@ -8,7 +8,7 @@ The project implements the "Game of life" invented by John Horton Conway.
 
 ## Running
 
-1. Run with `ruby Game.rb`
+1. Run with `ruby app/Game.rb`
 
 ## Developing
 
