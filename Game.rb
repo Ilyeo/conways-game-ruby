@@ -67,4 +67,4 @@ end
 b = Board.new(3,3)
 g = Game.new(b,[[0,1],[1,1],[2,1]])
 g.total_generations = 5
-g.run
+g.run true
