@@ -27,4 +27,9 @@ class Cell
   def bornCell
     @state = true;
   end
+
+  # imprime cell
+  def to_s
+    @state ? '1 ' : '0 '
+  end
 end

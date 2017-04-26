@@ -45,26 +45,25 @@ class Game
   end
 
   def print
-    p "*** Generation #{@generation} ***"
+    puts "*** Generation #{@generation} ***"
     @board.grid.each do |row|
-      row.each do |element|
-        print element.isAlive ? "1 " : "0 "
-      end
-      puts "\n"
+      puts row.join('');
     end
   end
 
-  def run(printable=false)
+  def run
     @total_generations.times do |i|
+      self.print
       self.nextGeneration
       @generation += 1
-      self.print if printable
     end
     @generation
   end
 end
 
+seed_blinker = [ [0,1], [1,1], [2,1] ]
+seed_glider = [ [0,1], [1,2], [2,0], [2,1], [2,2] ]
 b = Board.new(3,3)
-g = Game.new(b,[[0,1],[1,1],[2,1]])
-g.total_generations = 5
-g.run true
+g = Game.new(b,seed_blinker)
+g.total_generations = 10
+g.run

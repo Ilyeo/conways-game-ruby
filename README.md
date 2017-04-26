@@ -8,9 +8,9 @@ The project implements the "Game of life" invented by John Horton Conway.
 
 ## Running
 
-1. Run `ruby Game.rb`.
+1. Run with `ruby Game.rb`
 
 ## Developing
 
 1. `gem install rspec`
-2. `rspec game-test.rb` for tests.
+2. Run unit tests with `rspec game-test.rb`
