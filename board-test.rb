@@ -93,4 +93,66 @@ describe Board do
       end
     end
   end
+
+  describe "Neighbors alive" do
+    context "From at position middle of board"
+    let(:cell_for_test) { board_for_test.grid[1][1] }
+
+    it "Detects a neighbor alive up" do
+      board_for_test.grid[cell_for_test.y - 1][cell_for_test.x].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive down" do
+      board_for_test.grid[cell_for_test.y + 1][cell_for_test.x].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive left" do
+      board_for_test.grid[cell_for_test.y][cell_for_test.x - 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive right" do
+      board_for_test.grid[cell_for_test.y][cell_for_test.x + 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive up left" do
+      board_for_test.grid[cell_for_test.y - 1][cell_for_test.x - 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive up right" do
+      board_for_test.grid[cell_for_test.y - 1][cell_for_test.x + 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive down left" do
+      board_for_test.grid[cell_for_test.y + 1][cell_for_test.x - 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "Detects a neighbor alive down right" do
+      board_for_test.grid[cell_for_test.y + 1][cell_for_test.x + 1].state = true
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 1
+    end
+
+    it "No neighbors alive nearby" do
+      expect(board_for_test.neighborsAlive(cell_for_test).count).to eq 0
+    end
+  end
+
+  describe "Generate first generation" do
+    before { board_for_test.generate }
+    it 'Should not return an empty array' do
+      expect(board_for_test.live_cells).to_not eq []
+    end
+  end
+
+  describe "Counting cells alive and deads" do
+    it "Returns total cells" do
+      expect(board_for_test.live_cells.count + board_for_test.dead_cells.count).to eq board_for_test.cells.count
+    end
+  end
 end
