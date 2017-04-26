@@ -27,5 +27,4 @@ class Cell
   def bornCell
     @state = true;
   end
-
 end

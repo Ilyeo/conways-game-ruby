@@ -1,7 +1,7 @@
 require "rspec"
-require_relative "Cell"
-require_relative "Board"
 require_relative "Game"
+require_relative "Board"
+require_relative "Cell"
 
 describe Game do
 
@@ -61,7 +61,32 @@ describe Game do
             expect(game_for_test.board.live_cells.count).to eq 6
           end
         end
+      end
+    end
+  end
 
+  context 'with a valid scenario' do
+    let(:board) { Board.new }
+    let(:seed) { [[0,1],[1,0],[1,1],[2,2]] }
+    let(:game) { Game.new(board, seed) }
+
+    it 'can assign generations' do
+      expect(game.total_generations).to eq 1
+      game.total_generations = 5
+      expect(game.total_generations).to eq 5
+    end
+
+    describe 'run' do
+      it 'returns the total generations it ran' do
+        game.total_generations = 5
+        game.run
+        expect(game.generation).to eq 5
+      end
+      it 'actually runs the game' do
+        live_cells = game.board.live_cells
+        game.total_generations = 5
+        game.run
+        expect(game.board.live_cells.count).to eq 5
       end
     end
   end

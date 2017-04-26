@@ -38,35 +38,33 @@ class Game
         # cualquier celula muerta con exactamente 3 vecinos vivos, nace para la proxima generacion.
         cells_that_live << cell if live_cells == 3
       end
-
     end
 
-      cells_that_live.each  { |cell| cell.bornCell }
-      cells_that_die.each   { |cell| cell.killCell }
-    end
-
+    cells_that_live.each  { |cell| cell.bornCell }
+    cells_that_die.each   { |cell| cell.killCell }
   end
 
-  def draw
-    p "** Game of life - Generation #{@generation} **"
+  def print
+    p "*** Generation #{@generation} ***"
     @board.grid.each do |row|
       row.each do |element|
-        print element.isAlive ? "1" : "0"
+        print element.isAlive ? "1 " : "0 "
       end
       puts "\n"
+    end
   end
 
   def run(printable=false)
     @total_generations.times do |i|
       self.nextGeneration
       @generation += 1
-      self.draw if printable
+      self.print if printable
     end
     @generation
   end
-
 end
 
-
-g = Game.new(Board.new(5,5), [[1,0],[2,1],[1,1]])
+b = Board.new(3,3)
+g = Game.new(b,[[0,1],[1,1],[2,1]])
 g.total_generations = 5
+g.run
