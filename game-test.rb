@@ -1,7 +1,7 @@
 require "rspec"
-require_relative "Game"
-require_relative "Board"
-require_relative "Cell"
+require_relative "app/Game"
+require_relative "app/Board"
+require_relative "app/Cell"
 
 describe Game do
 

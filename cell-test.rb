@@ -1,5 +1,5 @@
 require "rspec"
-require_relative "Cell"
+require_relative "app/Cell"
 
 describe Cell do
   subject(:cell) { Cell.new }

@@ -1,6 +1,6 @@
 require "rspec"
-require_relative "Board"
-require_relative "Cell"
+require_relative "app/Board"
+require_relative "app/Cell"
 
 describe Board do
 
