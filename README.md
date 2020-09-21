@@ -5,12 +5,12 @@ The project implements the "Game of life" invented by John Horton Conway.
 ## Installing
 
 1. Clone the repo
+2. Run `bundle install` to install dependencies
 
-## Running
+## Running the game
 
-1. Run with `ruby app/Game.rb`
+1. Run `ruby lib/game_of_life.rb`
 
-## Developing
+## Running tests
 
-1. `gem install rspec`
-2. Run unit tests with `rspec game-test.rb`
+1. Run `ruby test/galaxy_test.rb` to execute galaxy test file
