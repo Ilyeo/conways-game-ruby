@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require_relative '../lib/god'
 require_relative '../lib/galaxy'
@@ -9,7 +11,7 @@ describe God do
     end
 
     it 'galaxy dies' do
-      @g.neighborhood_size = 1
+      @g.set_neighborhood_size(1)
       God.destiny!(@g)
       _(@g.alive?).must_equal false
     end
@@ -21,7 +23,7 @@ describe God do
     end
 
     it 'galaxy lives' do
-      @g.neighborhood_size = 3
+      @g.set_neighborhood_size(3)
       God.destiny!(@g)
       _(@g.alive?).must_equal true
     end
@@ -33,7 +35,7 @@ describe God do
     end
 
     it 'galaxy dies' do
-      @g.neighborhood_size = 4
+      @g.set_neighborhood_size(4)
       God.destiny!(@g)
       _(@g.alive?).must_equal false
     end
@@ -45,7 +47,7 @@ describe God do
     end
 
     it 'galaxy dies' do
-      @g.neighborhood_size = 3
+      @g.set_neighborhood_size(3)
       God.destiny!(@g)
       _(@g.alive?).must_equal true
     end

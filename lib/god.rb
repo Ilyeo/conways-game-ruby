@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# God applies conways rules
 class God
   def self.destiny!(galaxy)
     if galaxy.alive?
@@ -7,9 +10,7 @@ class God
         galaxy.spawn!
       end
     else
-      if galaxy.neighborhood_size == 3
-        galaxy.spawn!
-      end
+      galaxy.spawn! if galaxy.neighborhood_size == 3
     end
   end
 end
