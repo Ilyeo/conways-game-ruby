@@ -1,14 +1,8 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require_relative '../lib/universe'
-
-def inspect_neighborhood_sizes u
-  u.galaxies.each do |starship|
-    starship.each do |galaxy|
-      print galaxy.neighborhood_size
-    end
-    print "\n"
-  end
-end
+require_relative '../lib/telescope'
 
 describe Universe do
   it 'returns a matrix of galaxies' do
@@ -20,22 +14,22 @@ describe Universe do
 
   it 'populates an universe with galaxies' do
     u = Universe.new
-    _(u).must_respond_to :bing_bang!
-  end
-
-  it 'watches an universe' do
-    u = Universe.new
-    _(u).must_respond_to :watch
+    _(u).must_respond_to :bing_bang
   end
 
   describe 'blinker pattern' do
-
     before do
-      blinker = [
-        [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ],
-        [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ],
-        [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ]
-      ]
+      def inspect_neighborhood_sizes(u)
+        u.galaxies.each do |starship|
+          starship.each do |galaxy|
+            print galaxy.neighborhood_size
+          end
+          print "\n"
+        end
+      end
+
+      blinker = []
+      3.times { blinker << [Galaxy.new(0), Galaxy.new(1), Galaxy.new(0)] }
 
       @u = Universe.new(blinker)
     end
@@ -45,7 +39,7 @@ describe Universe do
       _(@u.galaxies[1][1].state).must_equal 1
       _(@u.galaxies[2][1].state).must_equal 1
       puts 'Blinker pattern in the universe'
-      @u.watch
+      Telescope.watch(@u)
     end
 
     it 'sets the neighbors size for each galaxy' do
@@ -63,7 +57,7 @@ describe Universe do
       _(@u.galaxies[1][1].state).must_equal 1
       _(@u.galaxies[1][2].state).must_equal 1
       puts 'Blinker pattern next generation (iteration 2)'
-      @u.watch
+      Telescope.watch(@u)
     end
   end
 end

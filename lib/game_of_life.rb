@@ -1,15 +1,15 @@
-require_relative 'universe'
+# frozen_string_literal: true
 
-blinker = [
-  [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ],
-  [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ],
-  [ Galaxy.new(0), Galaxy.new(1), Galaxy.new(0) ]
-]
+require_relative 'universe'
+require_relative 'telescope'
+
+blinker = []
+3.times { blinker << [Galaxy.new(0), Galaxy.new(1), Galaxy.new(0)] }
 
 u = Universe.new(blinker)
 
 loop do
-  u.watch
+  Telescope.watch(u)
   u.explore_neighborhood
   u.next_generation
   sleep(0.25)
