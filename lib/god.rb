@@ -4,13 +4,10 @@
 class God
   def self.destiny!(galaxy)
     if galaxy.alive?
-      if galaxy.neighborhood_size < 2 || galaxy.neighborhood_size > 3
-        galaxy.destroy!
-      elsif galaxy.neighborhood_size == 2 || galaxy.neighborhood_size == 3
-        galaxy.spawn!
-      end
+      galaxy.destroy! if galaxy.underpopulation? || galaxy.overpopulation?
+      galaxy.spawn! if galaxy.next_generation? || galaxy.reproduction?
     else
-      galaxy.spawn! if galaxy.neighborhood_size == 3
+      galaxy.spawn! if galaxy.reproduction?
     end
   end
 end
