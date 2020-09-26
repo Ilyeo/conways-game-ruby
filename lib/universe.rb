@@ -35,13 +35,13 @@ class Universe
         neighborhood << @galaxies[north][east] if y.positive? && x < (@galaxies.size - 1) # galaxy_at_north_east
         neighborhood << @galaxies[y][east] if x < (@galaxies.size - 1) # galaxy_at_east
         if y < (@galaxies.size - 1) && x < (@galaxies.size - 1)
-          neighborhood << @galaxies[south][east]
-        end # galaxy_at_south_east
+          neighborhood << @galaxies[south][east] # galaxy_at_south_east
+        end
         neighborhood << @galaxies[south][x] if y < (@galaxies.size - 1) # galaxy_at_south
         neighborhood << @galaxies[south][west] if  y < (@galaxies.size - 1) && x.positive? # galaxy_at_south_west
         neighborhood << @galaxies[y][west] if  x.positive? # galaxy_at_west
         neighborhood << @galaxies[north][west] if y.positive? && x.positive? # galaxy_at_north_west
-        galaxy.set_neighborhood_size(neighborhood.select(&:alive?).size)
+        galaxy.neighborhood(neighborhood.select(&:alive?).size)
       end
     end
   end
